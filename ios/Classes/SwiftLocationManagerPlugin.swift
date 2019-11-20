@@ -62,7 +62,7 @@ public class SwiftLocationManagerPlugin: NSObject {
     private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         print("Application Launched because of : \(String(describing: launchOptions))")
         // Check to see if we're being launched due to a location event.
-        if launchOptions?[UIApplicationLaunchOptionsKey.location] != nil {
+        if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             // Restart the headless service.
             startHeadlesService(getCallbackDispatcherHandle())
             startLocationTracking()
