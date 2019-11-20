@@ -30,6 +30,8 @@ public class SwiftLocationManagerPlugin: NSObject {
         }
         
         headlessRunner = FlutterEngine(name: "LocationManagerIsolate", project: nil, allowHeadlessExecution: true)
+        
+        print("headless add \(headlessRunner == nil)")
         self.registrarInstance = registrar
         
         mainChannel = FlutterMethodChannel(name: Constants.FOREGROUND_CHANNEL_ID, binaryMessenger: (registrar?.messenger())!)
@@ -51,7 +53,7 @@ public class SwiftLocationManagerPlugin: NSObject {
         let uri = info?.callbackLibraryPath
         print("Uri Found")
         headlessRunner?.run(withEntrypoint: entrypoint, libraryURI: uri)
-        print("headless add")
+        print("headless add \(headlessRunner == nil)")
         assert(registerPlugins != nil, "Failed to set registerPlugins")
         
         // Once our headless runner has been started, we need to register the application's plugins
