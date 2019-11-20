@@ -126,12 +126,15 @@ extension SwiftLocationManagerPlugin: FlutterPlugin{
             result(nil)
             break
         case Constants.METHOD_PLUGIN_MONITOR_LOCATION_UPDATE:
+            print("Location Callback: \((arguments?[Constants.ARG_LOCATION_UPDATE] as? NSNumber)?.int64Value ?? 0)")
             let callbackHandle = (arguments?[Constants.ARG_LOCATION_UPDATE] as? NSNumber)?.int64Value ?? 0
             setLocationUpdateHandle(callbackHandle)
             print("Location Event Callback Channel initialized")
             result(nil)
             break
         case Constants.METHOD_PLUGIN_MONITOR_GEOFENCE_EVENT:
+            print("GeoFence Callback: \((arguments?[Constants.ARG_GEOFENCE_EVENT] as? NSNumber)?.int64Value ?? 0)")
+            
             let callbackHandle = (arguments?[Constants.ARG_GEOFENCE_EVENT] as? NSNumber)?.int64Value ?? 0
             setGeofenceEventHandle(callbackHandle)
             print("GeoFence Event Callback Channel initialized")
