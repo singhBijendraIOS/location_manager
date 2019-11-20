@@ -41,20 +41,26 @@ public class SwiftLocationManagerPlugin: NSObject {
     func startHeadlesService(_ handle: Int64) {
         print("startHeadlesService(_ handle: Int64) Called")
         setCallbackDispatcherHandle(handle)
+        print("Call Back Set")
         let info = FlutterCallbackCache.lookupCallbackInformation(handle)
+        print("Info Set")
         assert(info != nil, "Failed to find callback")
-        
+        print("Info not nil")
         let entrypoint = info?.callbackName
+        print("callback name found")
         let uri = info?.callbackLibraryPath
+        print("Uri Found")
         headlessRunner?.run(withEntrypoint: entrypoint, libraryURI: uri)
-        print("headlessRunner?.run(withEntrypoint: entrypoint, libraryURI: uri)")
+        print("headless add")
         assert(registerPlugins != nil, "Failed to set registerPlugins")
         
         // Once our headless runner has been started, we need to register the application's plugins
         // with the runner in order for them to work on the background isolate. `registerPlugins` is
         // a callback set from AppDelegate.m in the main application. This callback should register
         // all relevant plugins (excluding those which require UI).
+         print("registerPlugins not nil")
         registerPlugins?(headlessRunner!)
+        print("registerPlugins runner added")
         registrarInstance?.addMethodCallDelegate(self, channel: callbackChannel!)
         print("startHeadlesService(_ handle: Int64) Completed")
     }
