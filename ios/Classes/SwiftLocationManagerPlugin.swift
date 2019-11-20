@@ -52,6 +52,7 @@ public class SwiftLocationManagerPlugin: NSObject {
         print("callback name found: \(entrypoint)")
         let uri = info?.callbackLibraryPath
         print("Uri Found: \(uri)")
+        print("headless add \(headlessRunner == nil)")
         headlessRunner?.run(withEntrypoint: entrypoint, libraryURI: uri)
         print("headless add \(headlessRunner == nil)")
         assert(registerPlugins != nil, "Failed to set registerPlugins")
