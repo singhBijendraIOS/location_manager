@@ -259,6 +259,7 @@ extension SwiftLocationManagerPlugin: CLLocationManagerDelegate{
     }
     
     func startLocationTracking(){
+        self.takePermission()
         locationManager?.startUpdatingLocation()
         locationManager?.startMonitoringSignificantLocationChanges()
         print("Location Tracking Started")
