@@ -24,7 +24,7 @@ public class SwiftLocationManagerPlugin: NSObject {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.distanceFilter = 0.001f;
+        locationManager?.distanceFilter = 0.001f
         locationManager?.pausesLocationUpdatesAutomatically = false
         if #available(iOS 9.0, *) {
             locationManager?.allowsBackgroundLocationUpdates = true
